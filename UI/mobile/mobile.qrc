@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>mobile.qml</file>
+        <file>Main.qml</file>
+
+        <file>helpers/Toast.qml</file>
+        <file>helpers/ToastManager.qml</file>
+        <file>helpers/util.js</file>
+
+        <file>resources/icon.jpg</file>
+    </qresource>
+</RCC>
