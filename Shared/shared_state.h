@@ -30,6 +30,9 @@ class SharedState : public QObject
     public:
     Q_INVOKABLE QVariant getSession();
 
+    //Calculate answer
+    Q_INVOKABLE QVariant challengeAnswer( QString challenge );
+
     private:
     //Session logic
     bool loadSession();

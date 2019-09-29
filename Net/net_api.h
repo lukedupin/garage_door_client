@@ -20,15 +20,15 @@ class ApiControl
              std::function<void (JChallenge&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
-    void download_magic_key(
+    void download_magic_key( QString challenge,
              std::function<void (JMagicKey&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
-    void toggle_door( QString challenge,
+    void toggle_door( QString challenge_response,
              std::function<void (JEmpty&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
-    void door_status( QString challenge,
+    void door_status( QString challenge_response,
              std::function<void (JDoorStatus&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 };
@@ -48,13 +48,13 @@ class ApiControlQml : public QObject
     Q_INVOKABLE void request_challenge(
                              QJSValue success = QJSValue(), QJSValue failed = QJSValue() );
 
-    Q_INVOKABLE void download_magic_key(
+    Q_INVOKABLE void download_magic_key( QString challenge,
                              QJSValue success = QJSValue(), QJSValue failed = QJSValue() );
 
-    Q_INVOKABLE void toggle_door( QString challenge,
+    Q_INVOKABLE void toggle_door( QString challenge_response,
                              QJSValue success = QJSValue(), QJSValue failed = QJSValue() );
 
-    Q_INVOKABLE void door_status( QString challenge,
+    Q_INVOKABLE void door_status( QString challenge_response,
                              QJSValue success = QJSValue(), QJSValue failed = QJSValue() );
 };
 

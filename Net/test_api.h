@@ -23,18 +23,18 @@ class TestApiControl
              std::function<void (JChallenge&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
-    std::function<void (std::function<void (JMagicKey&)>, std::function<void (JErr&, bool)>)> download_magic_keyCallback = nullptr;
-    void download_magic_key(
+    std::function<void (QString, std::function<void (JMagicKey&)>, std::function<void (JErr&, bool)>)> download_magic_keyCallback = nullptr;
+    void download_magic_key( QString challenge,
              std::function<void (JMagicKey&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
     std::function<void (QString, std::function<void (JEmpty&)>, std::function<void (JErr&, bool)>)> toggle_doorCallback = nullptr;
-    void toggle_door( QString challenge,
+    void toggle_door( QString challenge_response,
              std::function<void (JEmpty&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 
     std::function<void (QString, std::function<void (JDoorStatus&)>, std::function<void (JErr&, bool)>)> door_statusCallback = nullptr;
-    void door_status( QString challenge,
+    void door_status( QString challenge_response,
              std::function<void (JDoorStatus&)> success = nullptr,
              std::function<void (JErr&, bool)> failed = nullptr );
 };

@@ -30,38 +30,38 @@ void TestApiControl::request_challenge(
         QVERIFY2(false, "No callback set for Control->request_challenge");
 }
 
-void TestApiControl::download_magic_key(
+void TestApiControl::download_magic_key( QString challenge,
                 std::function<void (JMagicKey&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     _queue->enqueue("Control->download_magic_key");
 
     if ( download_magic_keyCallback != nullptr )
-        download_magic_keyCallback( success, failed );
+        download_magic_keyCallback( challenge, success, failed );
     else
         QVERIFY2(false, "No callback set for Control->download_magic_key");
 }
 
-void TestApiControl::toggle_door( QString challenge,
+void TestApiControl::toggle_door( QString challenge_response,
                 std::function<void (JEmpty&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     _queue->enqueue("Control->toggle_door");
 
     if ( toggle_doorCallback != nullptr )
-        toggle_doorCallback( challenge, success, failed );
+        toggle_doorCallback( challenge_response, success, failed );
     else
         QVERIFY2(false, "No callback set for Control->toggle_door");
 }
 
-void TestApiControl::door_status( QString challenge,
+void TestApiControl::door_status( QString challenge_response,
                 std::function<void (JDoorStatus&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     _queue->enqueue("Control->door_status");
 
     if ( door_statusCallback != nullptr )
-        door_statusCallback( challenge, success, failed );
+        door_statusCallback( challenge_response, success, failed );
     else
         QVERIFY2(false, "No callback set for Control->door_status");
 }

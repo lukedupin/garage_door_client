@@ -59,11 +59,12 @@ void ApiControl::request_challenge(
                  } );
 }
 
-void ApiControl::download_magic_key(
+void ApiControl::download_magic_key( QString challenge,
                 std::function<void (JMagicKey&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     auto&& data = QJsonObject();
+    data.insert("challenge", challenge);
     _http->post( "/control/download_magic_key/", data,
                  [=](QJsonObject& js) {
                      auto json_result = false;
@@ -108,12 +109,12 @@ void ApiControl::download_magic_key(
                  } );
 }
 
-void ApiControl::toggle_door( QString challenge,
+void ApiControl::toggle_door( QString challenge_response,
                 std::function<void (JEmpty&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     auto&& data = QJsonObject();
-    data.insert("challenge", challenge);
+    data.insert("challenge_response", challenge_response);
     _http->post( "/control/toggle_door/", data,
                  [=](QJsonObject& js) {
                      auto json_result = false;
@@ -158,12 +159,12 @@ void ApiControl::toggle_door( QString challenge,
                  } );
 }
 
-void ApiControl::door_status( QString challenge,
+void ApiControl::door_status( QString challenge_response,
                 std::function<void (JDoorStatus&)> success,
                 std::function<void (JErr&, bool)> failed )
 {
     auto&& data = QJsonObject();
-    data.insert("challenge", challenge);
+    data.insert("challenge_response", challenge_response);
     _http->post( "/control/door_status/", data,
                  [=](QJsonObject& js) {
                      auto json_result = false;
@@ -261,11 +262,12 @@ void ApiControlQml::request_challenge(
                  } );
 }
 
-void ApiControlQml::download_magic_key(
+void ApiControlQml::download_magic_key( QString challenge,
                 QJSValue success,
                 QJSValue failed )
 {
     auto&& data = QJsonObject();
+    data.insert("challenge", challenge);
     _http->post( "/control/download_magic_key/", data,
                  [=](QJsonObject& js) mutable {
                      auto json_result = false;
@@ -308,12 +310,12 @@ void ApiControlQml::download_magic_key(
                  } );
 }
 
-void ApiControlQml::toggle_door( QString challenge,
+void ApiControlQml::toggle_door( QString challenge_response,
                 QJSValue success,
                 QJSValue failed )
 {
     auto&& data = QJsonObject();
-    data.insert("challenge", challenge);
+    data.insert("challenge_response", challenge_response);
     _http->post( "/control/toggle_door/", data,
                  [=](QJsonObject& js) mutable {
                      auto json_result = false;
@@ -356,12 +358,12 @@ void ApiControlQml::toggle_door( QString challenge,
                  } );
 }
 
-void ApiControlQml::door_status( QString challenge,
+void ApiControlQml::door_status( QString challenge_response,
                 QJSValue success,
                 QJSValue failed )
 {
     auto&& data = QJsonObject();
-    data.insert("challenge", challenge);
+    data.insert("challenge_response", challenge_response);
     _http->post( "/control/door_status/", data,
                  [=](QJsonObject& js) mutable {
                      auto json_result = false;

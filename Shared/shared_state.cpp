@@ -4,6 +4,7 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QDateTime>
+#include <QCryptographicHash>
 
 static const char* filename = "settings.json";
 
@@ -24,6 +25,14 @@ SharedState::SharedState( Mailbox* mailbox,
 QVariant SharedState::getSession()
 {
     return QVariant( Sess.toJson() );
+}
+
+QVariant SharedState::challengeAnswer( QString challenge )
+{
+    QCryptographicHash hash( QCryptographicHash::Sha256 );
+    hash.addData( Sess.magic_key.toUtf8() );
+    hash.addData( challenge.toUtf8() );
+    return QString( hash.result().toHex() );
 }
 
 //Setup the session object

@@ -13,6 +13,10 @@ ApplicationWindow {
         Mailbox.popForm.connect( appWindow.onPopForm )
 
         Mailbox.toast.connect( toast.show )
+
+        //Grab the shared state
+        var sess = SharedState.getSession()
+        mainForm.needs_magic_key = (sess.magic_key === "")
     }
 
     function onPushForm( qml_file, args )
@@ -74,7 +78,7 @@ ApplicationWindow {
                 close()
 
             stackView.displayNavigation = false
-            Mailbox.emitCurrentItem( "Main.qml", main_form, stackView.qml_files.length )
+            Mailbox.emitCurrentItem( "Main.qml", mainForm, stackView.qml_files.length )
         }
         else
         {
@@ -148,8 +152,12 @@ ApplicationWindow {
     }
 
     Main {
-        id: main_form
+        id: mainForm
 
+        page_width: appWindow.width
+        page_height: appWindow.height
+
+        anchors.fill: appWindow
     }
 
     ToastManager {
