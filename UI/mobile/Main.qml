@@ -29,9 +29,10 @@ Rectangle {
                                                  function (resp)
                                                  {
                                                      failed = 0
-                                                     toggleDoor.background.color = (answer.status? "green": "red")
+                                                     toggleDoor.background.color = (resp.status? "green": "red")
                                                  },
                                                  function (err) {
+                                                     toggleDoor.background.color = "gray"
                                                  })
             },
             function( err) {
@@ -54,7 +55,7 @@ Rectangle {
         text: "Toggle Door"
 
         background: Rectangle {
-            //color: "gray"
+            color: "gray"
             radius: 15
         }
 
