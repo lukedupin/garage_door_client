@@ -301,7 +301,7 @@ void NetworkHttp::timeout()
             else
                 qDebug("Request timed out without callback");
 
-            urls.append( QString("%s[%d]").arg(_responseHash[key].Url).arg(time.elapsed()) );
+            urls.append( QString("%1[%2]").arg(_responseHash[key].Url).arg(time.elapsed()) );
             _responseHash.remove(key);
         }
     }

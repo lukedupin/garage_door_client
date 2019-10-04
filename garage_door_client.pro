@@ -5,7 +5,6 @@ QT += qml network quick networkauth sql
 
 android: {
     QT += androidextras
-    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/Android
 }
 
 CONFIG += c++14 -Werror

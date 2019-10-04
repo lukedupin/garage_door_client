@@ -49,6 +49,7 @@ Rectangle {
 
         anchors.margins: 15
         anchors.centerIn: self
+        padding: 15
 
         enabled: !needs_magic_key
 

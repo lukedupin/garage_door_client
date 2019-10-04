@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     auto api = new ApiInterface( network, mailbox );
     auto shared_state = new SharedState( mailbox, mailbox_qml, api );
 
-    network->setHost("192.168.1.216", 8000);
+    network->setHost("x.x.x.x", 80);
 
     //Setup the system monitor object
     System system( shared_state );

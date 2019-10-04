@@ -105,10 +105,7 @@ ApplicationWindow {
 
     StackView {
         id: stackView
-        anchors.top: titleBar.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: navigationBar.top
+        anchors.fill: parent
         focus: true
         initialItem: Item {
             id: page
@@ -126,8 +123,8 @@ ApplicationWindow {
             SequentialAnimation {
                 NumberAnimation { property: "opacity"; from: 0; to: 0.9; duration: 200 }
 
-                PropertyAction { target: titleBar; property: "state"; value: (stackView.depth > 1 || stackView.forceBackground)? "SHOW": "HIDE" }
-                PropertyAction { target: navigationBar; property: "state"; value: (stackView.depth > 1 && stackView.displayNavigation)? "SHOW": "HIDE" }
+                //PropertyAction { target: titleBar; property: "state"; value: (stackView.depth > 1 || stackView.forceBackground)? "SHOW": "HIDE" }
+                //PropertyAction { target: navigationBar; property: "state"; value: (stackView.depth > 1 && stackView.displayNavigation)? "SHOW": "HIDE" }
             }
         }
 
@@ -137,8 +134,8 @@ ApplicationWindow {
             SequentialAnimation {
                 NumberAnimation { property: "opacity"; from: 0.9; to: 0; duration: 300 }
 
-                PropertyAction { target: titleBar; property: "state"; value: (stackView.depth > 1 || stackView.forceBackground)? "SHOW": "HIDE" }
-                PropertyAction { target: navigationBar; property: "state"; value: (stackView.displayNavigation)? "SHOW": "HIDE" }
+                //PropertyAction { target: titleBar; property: "state"; value: (stackView.depth > 1 || stackView.forceBackground)? "SHOW": "HIDE" }
+                //PropertyAction { target: navigationBar; property: "state"; value: (stackView.displayNavigation)? "SHOW": "HIDE" }
             }
         }
 
